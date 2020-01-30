@@ -22,6 +22,7 @@ const AddTaskForm = ({list, onAddTask}) => {
             "text": inputValue,
             "completed": false
         };
+        setIsLoading(true);
         axios
             .post('http://localhost:3001/tasks', obj)
             .then(({data}) => { 

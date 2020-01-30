@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-
 import axios from 'axios';
 
 import removeSvg from '../../assets/img/remove.svg';
