@@ -1,59 +1,46 @@
-import React from 'react';
-import axios from 'axios';
-import {Link} from 'react-router-dom';
+import React from "react";
 
-import editSvg from '../../assets/img/edit.svg';
-
-
-import './Tasks.scss';
-
-import AddTaskForm from './AddTaskForm';
+import EditTitleList from "../List/EditTitleList";
+import AddTaskForm from "./AddTaskForm";
 import Task from "./Task";
 
-const Tasks = ({list, onEditTitle, onAddTask, onRemoveTask, onEditTask, onCompleteTask, withoutEmpty}) => {
+import "./Tasks.scss";
 
-    const editTitle = () => {
-        const newTitle = window.prompt('List name', list.name);
-
-        if (newTitle) {
-            onEditTitle(list.id, newTitle);
-            axios.patch('http://localhost:3001/lists/' + list.id, {
-                name: newTitle
-            })
-            .catch(() => {
-                alert('Cant reload list');
-            });
-        }
-    }
-
-    
-
-    return (
-        <div className="tasks">
-          <Link to={`/lists/${list.id}`}>
+const Tasks = ({
+  list,
+  onEditTitle,
+  onAddTask,
+  onRemoveTask,
+  onEditTask,
+  onCompleteTask,
+  withoutEmpty
+}) => {
+  return (
+    <div className="tasks">
+      {/* <Link to={`/lists/${list.id}`}>
             <h2 style={{ color: list.color.hex }} className="tasks__title">
                 {list.name}
                 <img onClick={editTitle} src={editSvg} alt="Edit icon"/>  
             </h2>
-          </Link>
-
-            <div className="tasks__items">
-                {!withoutEmpty && list.tasks && !list.tasks.length && <h2>No Tasks</h2>}
-                {list.tasks && list.tasks.map(task => (
-                    <Task 
-                        key={task.id} 
-                        list={list} 
-                        onEdit={onEditTask} 
-                        onRemove={onRemoveTask} 
-                        onComplete={onCompleteTask}
-                        {...task}/>
-                ))}
-                <AddTaskForm key={list.id} list={list} onAddTask={onAddTask}/>
-                
-                
-            </div>
-        </div>
-    )
-}
+          </Link> */}
+      <EditTitleList list={list} onEditTitle={onEditTitle} />
+      <div className="tasks__items">
+        {!withoutEmpty && list.tasks && !list.tasks.length && <h2>No Tasks</h2>}
+        {list.tasks &&
+          list.tasks.map(task => (
+            <Task
+              key={task.id}
+              list={list}
+              onEdit={onEditTask}
+              onRemove={onRemoveTask}
+              onComplete={onCompleteTask}
+              {...task}
+            />
+          ))}
+        <AddTaskForm key={list.id} list={list} onAddTask={onAddTask} />
+      </div>
+    </div>
+  );
+};
 
 export default Tasks;
