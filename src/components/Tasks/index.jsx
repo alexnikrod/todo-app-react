@@ -17,12 +17,6 @@ const Tasks = ({
 }) => {
   return (
     <div className="tasks">
-      {/* <Link to={`/lists/${list.id}`}>
-            <h2 style={{ color: list.color.hex }} className="tasks__title">
-                {list.name}
-                <img onClick={editTitle} src={editSvg} alt="Edit icon"/>  
-            </h2>
-          </Link> */}
       <EditTitleList list={list} onEditTitle={onEditTitle} />
       <div className="tasks__items">
         {!withoutEmpty && list.tasks && !list.tasks.length && <h2>No Tasks</h2>}

@@ -8,6 +8,7 @@ import Badge from "../Badge";
 
 import "./List.scss";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const List = ({
   items,
@@ -19,12 +20,14 @@ const List = ({
 }) => {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [itemToDelete, setItemToDelete] = useState("");
+  let history = useHistory();
 
   const removeList = item => {
     if (itemToDelete) {
       axios.delete("http://localhost:3001/lists/" + item.id).then(() => {
         onRemove(item.id);
         setVisiblePopup(false);
+        history.push(`/`);
       });
     }
   };
