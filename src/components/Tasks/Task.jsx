@@ -1,16 +1,24 @@
 import React, { useState } from "react";
+import InputField from "./InputField";
 
 const Task = ({ id, text, completed, list, onRemove, onEdit, onComplete }) => {
   const [visibleForm, setFormVisible] = useState(false);
   const [inputValue, setInputValue] = useState(text);
   const [isLoading, setIsLoading] = useState("");
+  const [error, setError] = useState(false);
 
   const toggleFormVisible = () => {
     setFormVisible(!visibleForm);
     setInputValue(text);
+    setError(false)
   };
 
-  const editTask = () => {
+  const editItem = () => {
+    if (inputValue === "") {
+      setError(true);
+      return error;
+    }
+
     let text = inputValue;
     setIsLoading(true);
     onEdit(list.id, { id, text });
@@ -84,20 +92,15 @@ const Task = ({ id, text, completed, list, onRemove, onEdit, onComplete }) => {
           </div>
         </div>
       ) : (
-        <div className="tasks__form-block">
-          <input
-            value={inputValue}
-            className="field"
-            type="text"
-            onChange={e => setInputValue(e.target.value)}
-          />
-          <button disabled={isLoading} onClick={editTask} className="button">
-            {isLoading ? "Editing" : "Save"}
-          </button>
-          <button onClick={toggleFormVisible} className="button button--grey">
-            Cancel
-          </button>
-        </div>
+        <InputField
+          toggleFormVisible={toggleFormVisible}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          editItem={editItem}
+          isLoading={isLoading}
+          error={error}
+          setError={setError}
+        />
       )}
     </>
   );

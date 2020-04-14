@@ -1,3 +1,8 @@
+// todo 
+// List delete, popup onBlur, empty field error new task and popup
+// Add List position
+
+
 import React from 'react';
 import classNames from 'classnames';
 import axios from 'axios';

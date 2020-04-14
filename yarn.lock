@@ -8690,6 +8690,11 @@ react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
   integrity sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
 
+react-onblur@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/react-onblur/-/react-onblur-1.8.0.tgz#6e9e4861aa96a824fb1afe990b37873f175c1f85"
+  integrity sha512-5evnxm7rabsjXjqPLCldnNNXOe9rvpZcX7pJZ1l+zmhYU3g3tiu42Dzzz18ekybLu3a2ctnWIApC6Pq+PUR5cA==
+
 react-router-dom@^5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-5.1.2.tgz#06701b834352f44d37fbb6311f870f84c76b9c18"
