@@ -14,11 +14,6 @@
       "id": 4,
       "name": "Books",
       "colorId": 2
-    },
-    {
-      "id": 5,
-      "name": "Personal",
-      "colorId": 1
     }
   ],
   "tasks": [
@@ -57,18 +52,6 @@
       "text": "The Godfather",
       "completed": true,
       "id": 9
-    },
-    {
-      "listId": 5,
-      "text": "1",
-      "completed": true,
-      "id": 11
-    },
-    {
-      "listId": 5,
-      "text": "2",
-      "completed": false,
-      "id": 12
     }
   ],
   "colors": [

@@ -43,6 +43,9 @@
   color: #fff;
   border: 0;
   padding: 10px 20px;
+  // margin-bottom: 10px;
+  // box-sizing: border-box;
+
   cursor: pointer;
   font-size: 14px;
 
@@ -68,6 +71,21 @@
 
     &:active {
       background: darken(#f4f6f8, 6%);
+
+    }
+  }
+
+  &--red {
+    background: red;
+    color: #fff;
+    margin-right: 10px;
+
+    &:hover {
+      background: darken(red, 3%);
+    }
+
+    &:active {
+      background: darken(red, 6%);
 
     }
   }

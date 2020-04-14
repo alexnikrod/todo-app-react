@@ -1,4 +1,8 @@
-// popup touch - no red, list delete
+// popup touch - no red
+// redirect on list dleeting
+// lockdown delete layer popup
+// popup buttons css
+// adlist popup position
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
