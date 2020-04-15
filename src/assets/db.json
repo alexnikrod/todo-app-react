@@ -16,9 +16,14 @@
       "colorId": 2
     },
     {
-      "name": "1",
-      "colorId": 1,
+      "name": "Business",
+      "colorId": 2,
       "id": 5
+    },
+    {
+      "name": "Sport",
+      "colorId": 8,
+      "id": 6
     }
   ],
   "tasks": [
@@ -43,7 +48,7 @@
     {
       "listId": 4,
       "text": "Erich Fromm - Escape from Freedom",
-      "completed": false,
+      "completed": true,
       "id": 5
     },
     {
@@ -59,10 +64,16 @@
       "id": 9
     },
     {
-      "listId": 5,
-      "text": "ko",
+      "listId": 4,
+      "text": "66",
       "completed": true,
-      "id": 10
+      "id": 11
+    },
+    {
+      "listId": 3,
+      "text": "The Matrix",
+      "completed": true,
+      "id": 12
     }
   ],
   "colors": [

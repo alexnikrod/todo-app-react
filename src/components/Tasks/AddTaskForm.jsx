@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
 
 import addtSvg from "../../assets/img/add.svg";
 import InputField from "./InputField";
+import { todoAPI } from "../../api/api";
 
 const AddTaskForm = ({ list, onAddTask }) => {
   const [visibleForm, setFormVisible] = useState(false);
@@ -13,10 +13,10 @@ const AddTaskForm = ({ list, onAddTask }) => {
   const toggleFormVisible = () => {
     setFormVisible(!visibleForm);
     setInputValue("");
-    setError(false)
+    setError(false);
   };
 
-  const addTask = (e) => {
+  const addTask = e => {
     if (inputValue === "") {
       setError(true);
       return error;
@@ -27,15 +27,14 @@ const AddTaskForm = ({ list, onAddTask }) => {
       text: inputValue,
       completed: false
     };
+
     setIsLoading(true);
-    axios
-      .post("http://localhost:3001/tasks", obj)
-      .then(({ data }) => {
+
+    todoAPI
+      .addTask(obj)
+      .then(data => {
         onAddTask(list.id, data);
         toggleFormVisible();
-      })
-      .catch(() => {
-        alert("Error");
       })
       .finally(() => {
         setIsLoading(false);

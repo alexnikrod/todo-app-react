@@ -1,14 +1,13 @@
 import React from "react";
 import classNames from "classnames";
-import axios from "axios";
-
-import removeSvg from "../../assets/img/remove.svg";
-
-import Badge from "../Badge";
-
-import "./List.scss";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+
+import removeSvg from "../../assets/img/remove.svg";
+import Badge from "../Badge";
+import { todoAPI } from "../../api/api";
+
+import "./List.scss";
 
 const List = ({
   items,
@@ -24,7 +23,7 @@ const List = ({
 
   const removeList = item => {
     if (itemToDelete) {
-      axios.delete("http://localhost:3001/lists/" + item.id).then(() => {
+      todoAPI.removeList(item.id).then(() => {
         onRemove(item.id);
         setVisiblePopup(false);
         history.push(`/`);
@@ -37,7 +36,9 @@ const List = ({
     setItemToDelete(item);
   };
 
-  const showHideOverlay = visiblePopup ? "overlay display-block" : "overlay display-none";
+  const showHideOverlay = visiblePopup
+    ? "overlay display-block"
+    : "overlay display-none";
 
   return (
     <>

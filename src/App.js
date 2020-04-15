@@ -1,33 +1,32 @@
 // popup touch - no red
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Route, useHistory } from "react-router-dom";
 
 import { List, AddList, Tasks } from "./components";
+import { todoAPI } from "./api/api";
 
 function App() {
   const [lists, setLists] = useState(null);
   const [colors, setColors] = useState(null);
   const [activeItem, setActiveItem] = useState(null);
+
   let history = useHistory();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/lists?_expand=color&_embed=tasks")
-      .then(({ data }) => {
-        setLists(data);
-      });
-    axios.get("http://localhost:3001/colors").then(({ data }) => {
+    todoAPI.getLists().then(data => {
+      setLists(data);
+    });
+    todoAPI.getColors().then(data => {
       setColors(data);
     });
   }, []);
-
+  // Add list
   const onAddList = obj => {
     const newList = [...lists, obj];
     setLists(newList);
   };
-
+  // Add task
   const onAddTask = (listId, taskObj) => {
     const newList = lists.map(item => {
       if (item.id === listId) {
@@ -37,7 +36,7 @@ function App() {
     });
     setLists(newList);
   };
-
+  // edit task
   const onEditTask = (listId, taskObj) => {
     const newTaskText = taskObj.text;
 
@@ -56,16 +55,11 @@ function App() {
       }
       return list;
     });
-    setLists(newList);
-    axios
-      .patch("http://localhost:3001/tasks/" + taskObj.id, {
-        text: newTaskText
-      })
-      .catch(() => {
-        alert("Не удалось обновить задачу");
-      });
-  };
 
+    setLists(newList);
+    todoAPI.editTask(taskObj.id, newTaskText)
+  };
+  // remove task
   const onRemoveTask = (listId, taskId) => {
     const newList = lists.map(item => {
       if (item.id === listId) {
@@ -73,12 +67,11 @@ function App() {
       }
       return item;
     });
-    setLists(newList);
-    axios.delete("http://localhost:3001/tasks/" + taskId).catch(() => {
-      alert("Cant delete task");
-    });
-  };
 
+    setLists(newList);
+    todoAPI.deleteTask(taskId);
+  };
+  // complete task
   const onCompleteTask = (listId, taskId, completed) => {
     const newList = lists.map(list => {
       if (list.id === listId) {
@@ -91,16 +84,11 @@ function App() {
       }
       return list;
     });
-    setLists(newList);
-    axios
-      .patch("http://localhost:3001/tasks/" + taskId, {
-        completed
-      })
-      .catch(() => {
-        alert("Не удалось обновить задачу");
-      });
-  };
 
+    setLists(newList);
+    todoAPI.completeTask(taskId, completed)
+  };
+  // edit list title
   const onEditListTitle = (id, title) => {
     const newList = lists.map(item => {
       if (item.id === id) {
@@ -161,7 +149,7 @@ function App() {
             isRemovable
           />
         ) : (
-          "Загрузка..."
+          "Loading..."
         )}
         <AddList onAdd={onAddList} colors={colors} />
       </div>

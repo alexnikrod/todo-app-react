@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
-import List from "../List";
+import List from "../List/List";
 import Badge from "../Badge";
+import { todoAPI } from "../../api/api";
 
 import closeSvg from "../../assets/img/close.svg";
 
@@ -33,30 +33,23 @@ const AddList = ({ colors, onAdd }) => {
       setError(true);
       return error;
     }
+    
     setIsLoading(true);
-    axios
-      .post("http://localhost:3001/lists", {
-        name: inputValue,
-        colorId: selectedColor
-      })
-      .then(({ data }) => {
-        const color = colors.filter(c => c.id === selectedColor)[0];
-        const listObj = { ...data, color, tasks: [] };
-        onAdd(listObj);
-        onClose();
-      })
-      .catch(() => {
-        alert("Error");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    todoAPI.addList(inputValue, selectedColor).then(data => {
+      const color = colors.filter(c => c.id === selectedColor)[0];
+      const listObj = { ...data, color, tasks: [] };
+      onAdd(listObj);
+      onClose();
+    })
+    .finally(() => {
+      setIsLoading(false);
+    });
   };
 
-  const onChange = (e) => {
-    setInputValue(e.target.value)    
-    setError(false)
-  }
+  const onChange = e => {
+    setInputValue(e.target.value);
+    setError(false);
+  };
 
   const handleBlur = e => {
     const currentTarget = e.currentTarget;
@@ -104,7 +97,11 @@ const AddList = ({ colors, onAdd }) => {
         ]}
       />
       {visiblePopup && (
-        <div className="add-list__popup" tabIndex="1" onBlur={e => handleBlur(e)}>
+        <div
+          className="add-list__popup"
+          tabIndex="1"
+          onBlur={e => handleBlur(e)}
+        >
           <img
             onClick={onClose}
             src={closeSvg}

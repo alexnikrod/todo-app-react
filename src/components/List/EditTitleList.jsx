@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 import editSvg from "../../assets/img/edit.svg";
 import InputField from "../Tasks/InputField";
+import { todoAPI } from "../../api/api";
 
 const EditTitleList = ({ list, onEditTitle }) => {
   const [visibleForm, setFormVisible] = useState(false);
@@ -14,7 +14,7 @@ const EditTitleList = ({ list, onEditTitle }) => {
   const toggleFormVisible = () => {
     setFormVisible(!visibleForm);
     setInputValue(list.name);
-    setError(false)
+    setError(false);
   };
 
   const editItem = () => {
@@ -27,13 +27,9 @@ const EditTitleList = ({ list, onEditTitle }) => {
 
     if (inputValue) {
       onEditTitle(list.id, inputValue);
-      axios
-        .patch("http://localhost:3001/lists/" + list.id, {
-          name: inputValue
-        })
-        .catch(() => {
-          alert("Cant reload list");
-        })
+
+      todoAPI
+        .editList(list.id, inputValue)
         .finally(() => {
           toggleFormVisible();
           setIsLoading(false);
