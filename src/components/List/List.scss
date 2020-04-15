@@ -69,24 +69,56 @@
   }
 
   &__delete {
-    width: 270px;
-		height: 60px;
-		background: #ffffff;
-		box-shadow: 0px 6px 10px rgba(0, 0, 0, .05);
-		border-radius: 10px;
-		padding: 20px;
-		box-sizing: content-box;
-		position: absolute;
-		top: 50%;
-    left: 50%;
     z-index: 99;
-    
+    width: 270px;
+    min-height: 60px;
+    background: #ffffff;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, .05);
+    border-radius: 10px;
+    padding: 15px;
+    box-sizing: content-box;
+    position: absolute;
+    top: -3%;
+    left: 46%;
+    text-align: center;
+    animation: fadeOut .3s ease-in-out;
+
     p {
-    margin-bottom: 10px;
+      margin-bottom: 10px;
+    }
+
   }
 
-   
-  }
-
-  
 }
+
+.overlay {
+  z-index: 97;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  // background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+

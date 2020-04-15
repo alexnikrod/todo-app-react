@@ -37,13 +37,12 @@
 
 	&__form {
 		margin-top: 20px;
-// transition: all 800ms ease-in-out;
+
 		&-block {
 			.button {
 				margin-right: 10px;
 				margin-top: 15px;
 				margin-bottom: 10px;
-				
 			}
 		}
 
@@ -57,7 +56,6 @@
 			&:hover {
 				opacity: .8;
 			}
-
 
 			img {
 				width: 16px;
@@ -83,7 +81,7 @@
 			position: absolute;
 
 			top: 50%;
-			left: 60%;
+			left: 57%;
 		}
 
 		&-row {
@@ -132,7 +130,8 @@
 			margin-left: 15px;
 			border: 0;
 			font-size: 16px;
-			width: 100%;
+			width: 82%;
+			word-wrap: break-word;
 		}
 	}
 

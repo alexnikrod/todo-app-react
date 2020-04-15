@@ -2,6 +2,7 @@
 	height: 36px;
 
 	&__popup {
+		z-index: 99;
 		width: 240px;
 		height: 150px;
 		background: #ffffff;
@@ -10,7 +11,7 @@
 		padding: 18px;
 		box-sizing: border-box;
 		position: relative;
-		top: -140px;
+		top: -55px;
 		left: 12px;
 		animation: windowPopUp 0.2s ease-in-out;
 

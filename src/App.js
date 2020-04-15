@@ -1,7 +1,4 @@
 // popup touch - no red
-// lockdown delete layer popup
-// popup buttons css
-// addlist popup position
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";

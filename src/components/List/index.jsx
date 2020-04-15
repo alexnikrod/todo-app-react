@@ -37,6 +37,8 @@ const List = ({
     setItemToDelete(item);
   };
 
+  const showHideOverlay = visiblePopup ? "overlay display-block" : "overlay display-none";
+
   return (
     <>
       <ul onClick={onClick} className="list">
@@ -67,21 +69,23 @@ const List = ({
         ))}
       </ul>
       {visiblePopup && (
-        <div className="list__delete">
-          <p>Are you sure you want to delete "{itemToDelete.name}"?</p>
+        <div className={showHideOverlay}>
+          <div className="list__delete">
+            <p>Are you sure you want to delete "{itemToDelete.name}"?</p>
 
-          <button
-            onClick={() => removeList(itemToDelete)}
-            className="button button--red"
-          >
-            Delete
-          </button>
-          <button
-            onClick={() => setVisiblePopup(false)}
-            className="button button--grey"
-          >
-            Cancel
-          </button>
+            <button
+              onClick={() => removeList(itemToDelete)}
+              className="button button--red"
+            >
+              Delete
+            </button>
+            <button
+              onClick={() => setVisiblePopup(false)}
+              className="button button--grey"
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       )}
     </>
