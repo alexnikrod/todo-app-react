@@ -1,5 +1,3 @@
-// popup touch - no red
-
 import React, { useState, useEffect } from "react";
 import { Route, useHistory } from "react-router-dom";
 
