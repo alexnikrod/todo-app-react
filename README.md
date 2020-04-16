@@ -1,8 +1,11 @@
-[DEMO](https://react-todo-rodkin.herokuapp.com/).
+## [DEMO](https://react-todo-rodkin.herokuapp.com/)
 
 ## To Do App - React JS
 
+**Stack:**
 
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
+- ReactJS (useState, useReducer, useEffect)
+- Axios
+- json-server
+- React Router
+- SCSS
