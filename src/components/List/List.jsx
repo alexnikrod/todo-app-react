@@ -73,7 +73,6 @@ const List = ({
         <div className={showHideOverlay}>
           <div className="list__delete">
             <p>Are you sure you want to delete "{itemToDelete.name}"?</p>
-
             <button
               onClick={() => removeList(itemToDelete)}
               className="button button--red"

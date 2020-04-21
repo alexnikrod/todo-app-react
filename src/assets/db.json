@@ -16,28 +16,33 @@
       "colorId": 2
     },
     {
-      "name": "Business",
-      "colorId": 2,
-      "id": 5
-    },
-    {
       "name": "Sport",
       "colorId": 8,
       "id": 6
+    },
+    {
+      "name": "test",
+      "colorId": 1,
+      "id": 7
+    },
+    {
+      "name": "empty",
+      "colorId": 6,
+      "id": 8
     }
   ],
   "tasks": [
     {
       "id": 1,
       "listId": 2,
-      "text": "Изучить JavaScript",
+      "text": "ECMAScript 2020",
       "completed": false
     },
     {
       "id": 3,
       "listId": 2,
-      "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
-      "completed": false
+      "text": "ReactJS Hooks (useState, useReducer, useEffect)",
+      "completed": true
     },
     {
       "id": 4,
@@ -47,14 +52,8 @@
     },
     {
       "listId": 4,
-      "text": "Erich Fromm - Escape from Freedom",
-      "completed": true,
-      "id": 5
-    },
-    {
-      "listId": 4,
       "text": "Marcus Aurelius - Meditations",
-      "completed": false,
+      "completed": true,
       "id": 6
     },
     {
@@ -64,16 +63,52 @@
       "id": 9
     },
     {
-      "listId": 4,
-      "text": "66",
+      "listId": 3,
+      "text": "No Time To Die",
+      "completed": false,
+      "id": 12
+    },
+    {
+      "listId": 6,
+      "text": "100 push-ups a day",
+      "completed": false,
+      "id": 13
+    },
+    {
+      "listId": 6,
+      "text": "Running 5 km a day",
+      "completed": false,
+      "id": 14
+    },
+    {
+      "listId": 6,
+      "text": "Kettlebell workout 20 minute a day",
       "completed": true,
-      "id": 11
+      "id": 15
+    },
+    {
+      "listId": 7,
+      "text": "Create, update, complete, delete task",
+      "completed": false,
+      "id": 16
+    },
+    {
+      "listId": 4,
+      "text": "Kobe Bryant - Mamba Mentality",
+      "completed": false,
+      "id": 17
+    },
+    {
+      "listId": 4,
+      "text": "Robert C. Martin - Clean Code: A Handbook of Agile Software Craftsmanship",
+      "completed": false,
+      "id": 18
     },
     {
       "listId": 3,
-      "text": "The Matrix",
-      "completed": true,
-      "id": 12
+      "text": "Ozark season 3",
+      "completed": false,
+      "id": 19
     }
   ],
   "colors": [

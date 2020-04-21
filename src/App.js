@@ -109,7 +109,7 @@ function App() {
     <div className="todo">
       <div className="todo__sidebar">
         <List
-          onClickItem={list => {
+          onClickItem={() => {
             history.push(`/`);
           }}
           items={[

@@ -33,17 +33,19 @@ const AddList = ({ colors, onAdd }) => {
       setError(true);
       return error;
     }
-    
+
     setIsLoading(true);
-    todoAPI.addList(inputValue, selectedColor).then(data => {
-      const color = colors.filter(c => c.id === selectedColor)[0];
-      const listObj = { ...data, color, tasks: [] };
-      onAdd(listObj);
-      onClose();
-    })
-    .finally(() => {
-      setIsLoading(false);
-    });
+    todoAPI
+      .addList(inputValue, selectedColor)
+      .then(data => {
+        const color = colors.filter(c => c.id === selectedColor)[0];
+        const listObj = { ...data, color, tasks: [] };
+        onAdd(listObj);
+        onClose();
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const onChange = e => {
@@ -53,7 +55,6 @@ const AddList = ({ colors, onAdd }) => {
 
   const handleBlur = e => {
     const currentTarget = e.currentTarget;
-
     setTimeout(() => {
       if (!currentTarget.contains(document.activeElement)) {
         onClose();
@@ -117,7 +118,6 @@ const AddList = ({ colors, onAdd }) => {
             placeholder="List name"
             required
           />
-
           <div className="add-list__popup-colors">
             {colors.map(color => (
               <Badge
