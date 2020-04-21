@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## [DEMO](https://react-todo-rodkin.herokuapp.com/)
 
 ## To Do App - React JS
@@ -10,5 +9,3 @@
 - json-server
 - React Router
 - SCSS
-=======
->>>>>>> last update
