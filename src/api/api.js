@@ -6,17 +6,17 @@ import * as axios from "axios";
 
 export const todoAPI = {
   getLists() {
-    return axios.get(`/lists?_expand=color&_embed=tasks`).then(({ data }) => {
+    axios.get(`/lists?_expand=color&_embed=tasks`).then(({ data }) => {
       return data;
     });
   },
   getColors() {
-    return axios.get(`/colors`).then(({ data }) => {
+    axios.get(`/colors`).then(({ data }) => {
       return data;
     });
   },
   addTask(obj) {
-    return axios
+    axios
       .post(`/tasks`, obj)
       .then(({ data }) => {
         return data;
@@ -26,7 +26,7 @@ export const todoAPI = {
       });
   },
   editTask(taskId, newText) {
-    return axios
+    axios
       .patch(`/tasks/${taskId}`, {
         text: newText
       })
@@ -35,20 +35,20 @@ export const todoAPI = {
       });
   },
   deleteTask(taskId) {
-    return axios.delete(`/tasks/${taskId}`).catch(() => {
+    axios.delete(`/tasks/${taskId}`).catch(() => {
       alert("Can't delete task");
     });
   },
   completeTask(taskId, completed) {
-    return axios.patch(`/tasks/${taskId}`, { completed }).catch(() => {
+    axios.patch(`/tasks/${taskId}`, { completed }).catch(() => {
       alert("Can't complete task");
     });
   },
   removeList(listId) {
-    return axios.delete(`/lists//${listId}`);
+    axios.delete(`/lists//${listId}`);
   },
   addList(name, colorId) {
-    return axios
+    axios
       .post(`/lists`, {
         name,
         colorId
@@ -61,7 +61,7 @@ export const todoAPI = {
       });
   },
   editList(listId, name) {
-    return axios.patch(`/lists/${listId}`, { name }).catch(() => {
+    axios.patch(`/lists/${listId}`, { name }).catch(() => {
       alert("Cant reload list");
     });
   }
