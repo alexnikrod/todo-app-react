@@ -17,11 +17,11 @@
     "serve": "^11.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start && node script.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "fake-json": "json-server ./src/assets/db.json --watch --port 3001"
+    "eject": "react-scripts eject"
+    
   },
   "eslintConfig": {
     "extends": "react-app"
