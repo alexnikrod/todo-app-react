@@ -1,23 +1,23 @@
-import * as axios from "axios";
+import axios from "axios";
 
-const instance = axios.create({
-  baseURL: "/"
-});
+// const instance = axios.create({
+//   baseURL: "/"
+// });
 
 export const todoAPI = {
   getLists() {
-    return instance.get(`lists?_expand=color&_embed=tasks`).then(({ data }) => {
+    return axios.get(`/lists?_expand=color&_embed=tasks`).then(({ data }) => {
       return data;
     });
   },
   getColors() {
-    return instance.get(`colors`).then(({ data }) => {
+    return axios.get(`/colors`).then(({ data }) => {
       return data;
     });
   },
   addTask(obj) {
-    return instance
-      .post(`tasks`, obj)
+    return axios
+      .post(`/tasks`, obj)
       .then(({ data }) => {
         return data;
       })
@@ -26,8 +26,8 @@ export const todoAPI = {
       });
   },
   editTask(taskId, newText) {
-    return instance
-      .patch(`tasks/${taskId}`, {
+    return axios
+      .patch(`/tasks/${taskId}`, {
         text: newText
       })
       .catch(() => {
@@ -35,21 +35,21 @@ export const todoAPI = {
       });
   },
   deleteTask(taskId) {
-    return instance.delete(`tasks/${taskId}`).catch(() => {
+    return axios.delete(`/tasks/${taskId}`).catch(() => {
       alert("Can't delete task");
     });
   },
   completeTask(taskId, completed) {
-    return instance.patch(`tasks/${taskId}`, { completed }).catch(() => {
+    return axios.patch(`/tasks/${taskId}`, { completed }).catch(() => {
       alert("Can't complete task");
     });
   },
   removeList(listId) {
-    return instance.delete(`lists//${listId}`);
+    return axios.delete(`/lists//${listId}`);
   },
   addList(name, colorId) {
-    return instance
-      .post(`lists`, {
+    return axios
+      .post(`/lists`, {
         name,
         colorId
       })
@@ -61,7 +61,7 @@ export const todoAPI = {
       });
   },
   editList(listId, name) {
-    return instance.patch(`lists/${listId}`, { name }).catch(() => {
+    return axios.patch(`/lists/${listId}`, { name }).catch(() => {
       alert("Cant reload list");
     });
   }

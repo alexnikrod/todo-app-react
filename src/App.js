@@ -3,6 +3,8 @@ import { Route, useHistory } from "react-router-dom";
 
 import { List, AddList, Tasks } from "./components";
 import { todoAPI } from "./api/api";
+// import axios from "axios";
+
 
 function App() {
   const [lists, setLists] = useState(null);
@@ -12,6 +14,9 @@ function App() {
   let history = useHistory();
 
   useEffect(() => {
+    // axios.get(`/lists?_expand=color&_embed=tasks`).then(({ data }) => {
+    //   setLists(data);
+    // });
     todoAPI.getLists().then(data => {
       setLists(data);
     });
