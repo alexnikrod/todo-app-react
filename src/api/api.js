@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://todo-app-react-delta.now.sh"
+  baseURL: "https://todo-app-react-delta.now.sh:4000"
 });
 
 export const todoAPI = {
