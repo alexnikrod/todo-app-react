@@ -1,13 +1,17 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://todo-app-react-delta.now.sh"
+  withCredentials: true,
+  baseURL: "https://todo-app-react-delta.now.sh/"
 });
 
 export const todoAPI = {
-  async getLists() {
-    const { data } = await instance.get(`/lists?_expand=color&_embed=tasks`);
-    return data;
+  getLists() {
+    return instance
+      .get(`lists?_expand=color&_embed=tasks`)
+      .then(response => {
+        return response.data;
+      });
   },
   async getColors() {
     const { data } = await instance.get(`/colors`);
