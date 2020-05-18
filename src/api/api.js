@@ -1,68 +1,77 @@
 import axios from "axios";
 
-// const instance = axios.create({
-//   baseURL: "/"
-// });
+const instance = axios.create({
+  baseURL: "https://todo-app-react-delta.now.sh:4000"
+});
 
 export const todoAPI = {
-  getLists() {
-    return axios.get(`/lists?_expand=color&_embed=tasks`).then(({ data }) => {
+  async getLists() {
+    const { data } = await instance.get(`/lists?_expand=color&_embed=tasks`);
+    return data;
+  },
+  async getColors() {
+    const { data } = await instance.get(`/colors`);
+    return data;
+  },
+  async addTask(obj) {
+    try {
+      const { data } = await instance
+        .post(`/tasks`, obj);
       return data;
-    });
+    }
+    catch (e) {
+      alert("Can't add task");
+    }
   },
-  getColors() {
-    return axios.get(`/colors`).then(({ data }) => {
-      return data;
-    });
+  async editTask(taskId, newText) {
+    try {
+      return instance
+        .patch(`/tasks/${taskId}`, {
+          text: newText
+        });
+    }
+    catch (e) {
+      alert("Can't update task");
+    }
   },
-  addTask(obj) {
-    return axios
-      .post(`/tasks`, obj)
-      .then(({ data }) => {
-        return data;
-      })
-      .catch(() => {
-        alert("Can't add task");
-      });
-  },
-  editTask(taskId, newText) {
-    return axios
-      .patch(`/tasks/${taskId}`, {
-        text: newText
-      })
-      .catch(() => {
-        alert("Can't update task");
-      });
-  },
-  deleteTask(taskId) {
-    return axios.delete(`/tasks/${taskId}`).catch(() => {
+  async deleteTask(taskId) {
+    try {
+      return instance.delete(`/tasks/${taskId}`);
+    }
+    catch (e) {
       alert("Can't delete task");
-    });
+    }
   },
-  completeTask(taskId, completed) {
-    return axios.patch(`/tasks/${taskId}`, { completed }).catch(() => {
+  async completeTask(taskId, completed) {
+    try {
+      return instance.patch(`/tasks/${taskId}`, { completed });
+    }
+    catch (e) {
       alert("Can't complete task");
-    });
+    }
   },
   removeList(listId) {
-    return axios.delete(`/lists//${listId}`);
+    return instance.delete(`/lists//${listId}`);
   },
-  addList(name, colorId) {
-    return axios
-      .post(`/lists`, {
-        name,
-        colorId
-      })
-      .then(({ data }) => {
-        return data;
-      })
-      .catch(() => {
-        alert("Can't add new list");
-      });
+  async addList(name, colorId) {
+    try {
+      const { data } = await instance
+        .post(`/lists`, {
+          name,
+          colorId
+        });
+      return data;
+    }
+    catch (e) {
+      alert("Can't add new list");
+    }
   },
-  editList(listId, name) {
-    return axios.patch(`/lists/${listId}`, { name }).catch(() => {
+  async editList(listId, name) {
+    try {
+      return instance.patch(`/lists/${listId}`, { name });
+    }
+    catch (e) {
       alert("Cant reload list");
-    });
+    }
   }
 };
