@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: "https://json-server-sage.now.sh/"
+  baseURL: "https://json-server-sage.now.sh/db.json"
 });
 
 export const todoAPI = {
