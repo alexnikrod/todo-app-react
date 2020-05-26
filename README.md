@@ -9,6 +9,6 @@
 
 - ReactJS (useState, useReducer, useEffect)
 - Axios
-- json-server (deployed on heroku)
+- json-server (deployed on heroku, it takes a few seconds to wake up)
 - React Router
 - SCSS
